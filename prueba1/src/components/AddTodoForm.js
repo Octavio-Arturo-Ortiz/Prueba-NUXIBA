@@ -21,10 +21,8 @@ const AddTodoForm = () => {
       return;
     }
 
-    // Enviar la nueva tarea al backend
     dispatch(addTodo({ userId: selectedUser.id, title, completed }));
-
-    // Limpiar el formulario
+    
     setTitle('');
     setCompleted(false);
   };

@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Acción para obtener las publicaciones del usuario
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (userId) => {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
   const postsWithComments = await Promise.all(

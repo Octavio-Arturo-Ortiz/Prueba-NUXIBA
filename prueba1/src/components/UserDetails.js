@@ -12,12 +12,12 @@ const UserDetails = () => {
   }
 
   const handleFetchPosts = () => {
-    dispatch(clearTodos()); // Limpiar las tareas al cargar publicaciones
+    dispatch(clearTodos()); 
     dispatch(fetchPosts(selectedUser.id));
   };
 
   const handleFetchTodos = () => {
-    dispatch(clearPosts()); // Limpiar las publicaciones al cargar tareas
+    dispatch(clearPosts()); 
     dispatch(fetchTodos(selectedUser.id));
   };
 

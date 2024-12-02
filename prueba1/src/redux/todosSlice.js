@@ -32,7 +32,6 @@ const todosSlice = createSlice({
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.loading = false;
-        // Ordenar las tareas por ID de mayor a menor
         state.data = action.payload.sort((a, b) => b.id - a.id);
       })
       .addCase(fetchTodos.rejected, (state, action) => {
@@ -40,7 +39,6 @@ const todosSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addTodo.fulfilled, (state, action) => {
-        // Agregar la nueva tarea al inicio y reordenar por ID
         state.data.unshift(action.payload);
         state.data.sort((a, b) => b.id - a.id);
       });
