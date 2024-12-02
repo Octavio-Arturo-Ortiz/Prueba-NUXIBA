@@ -6,8 +6,8 @@ import Todos from './components/Todos';
 
 const App = () => {
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Nuxiba Prueba Técnica</h1>
+    <div className="container mt-4">
+      <h1 className="text-center mb-4">Nuxiba Prueba Técnica</h1>
       <UsersList />
       <UserDetails />
       <Todos />

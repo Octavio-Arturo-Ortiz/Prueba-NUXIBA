@@ -7,7 +7,9 @@ const UserDetails = () => {
   const dispatch = useDispatch();
   const selectedUser = useSelector((state) => state.users.selectedUser);
 
-  if (!selectedUser) return <p>Selecciona un usuario para ver los detalles.</p>;
+  if (!selectedUser) {
+    return <p className="text-muted text-center">Selecciona un usuario para ver los detalles.</p>;
+  }
 
   const handleFetchPosts = () => {
     dispatch(clearTodos()); // Limpiar las tareas al cargar publicaciones
@@ -20,15 +22,27 @@ const UserDetails = () => {
   };
 
   return (
-    <div>
-      <h2>Detalles del Usuario</h2>
-      <p><strong>Nombre:</strong> {selectedUser.name}</p>
-      <p><strong>Usuario:</strong> {selectedUser.username}</p>
-      <p><strong>Email:</strong> {selectedUser.email}</p>
+    <div className="d-flex justify-content-center my-5">
+      <div className="card shadow" style={{ width: '500px', padding: '20px' }}>
+        <h2 className="text-center mb-4">Detalles del Usuario</h2>
+        <p><strong>Nombre:</strong> {selectedUser.name}</p>
+        <p><strong>Usuario:</strong> {selectedUser.username}</p>
+        <p><strong>Email:</strong> {selectedUser.email}</p>
 
-      <div style={{ marginTop: '20px' }}>
-        <button onClick={handleFetchPosts}>Ver Publicaciones</button>
-        <button onClick={handleFetchTodos}>Ver Tareas</button>
+        <div className="d-flex justify-content-around mt-4">
+          <button
+            className="btn btn-primary"
+            onClick={handleFetchPosts}
+          >
+            Ver Publicaciones
+          </button>
+          <button
+            className="btn btn-info"
+            onClick={handleFetchTodos}
+          >
+            Ver Tareas
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -30,29 +30,34 @@ const AddTodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
-      <h3>Agregar Nueva Tarea</h3>
-      <div>
-        <label>Título: </label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Escribe el título de la tarea"
-        />
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={completed}
-            onChange={(e) => setCompleted(e.target.checked)}
-          />
-          ¿Completada?
-        </label>
-      </div>
-      <button type="submit">Guardar Tarea</button>
-    </form>
+    <form onSubmit={handleSubmit} className="mt-4 p-3 border rounded shadow-sm">
+  <h3 className="text-center mb-4">Agregar Nueva Tarea</h3>
+  <div className="mb-3">
+    <label className="form-label">Título:</label>
+    <input
+      type="text"
+      className="form-control"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+      placeholder="Escribe el título de la tarea"
+    />
+  </div>
+  <div className="form-check mb-3">
+    <input
+      type="checkbox"
+      className="form-check-input"
+      id="completedCheckbox"
+      checked={completed}
+      onChange={(e) => setCompleted(e.target.checked)}
+    />
+    <label className="form-check-label" htmlFor="completedCheckbox">
+      ¿Completada?
+    </label>
+  </div>
+  <button type="submit" className="btn btn-success w-100">
+    Guardar Tarea
+  </button>
+</form>
   );
 };
 

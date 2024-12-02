@@ -9,25 +9,33 @@ const Posts = () => {
   if (posts.length === 0) return null;
 
   return (
-    <div>
-      <h2>Publicaciones</h2>
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-            <h4>Comentarios:</h4>
-            <ul>
-              {post.comments.map((comment) => (
-                <li key={comment.id}>
-                  <strong>{comment.name}:</strong> {comment.body}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+    <div className="container mt-4">
+    <h2 className="text-center mb-4">Publicaciones</h2>
+    <div className="row">
+      {posts.map((post) => (
+        <div key={post.id} className="col-md-6 col-lg-6 mb-4">
+          <div className="card h-100 shadow">
+            <div className="card-body">
+              <h3 className="text-center">{post.title}</h3>
+              <p className="card-text">{post.body}</p>
+              <h4 className="mt-4">Comentarios:</h4>
+              {post.comments.length === 0 ? (
+                <p className="text-muted">No hay comentarios para esta publicación.</p>
+              ) : (
+                <ul className="list-group">
+                  {post.comments.map((comment) => (
+                    <li key={comment.id} className="list-group-item">
+                      <strong>{comment.name}:</strong> {comment.body}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
+  </div>
   );
 };
 
