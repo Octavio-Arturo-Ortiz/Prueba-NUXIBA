@@ -10,8 +10,8 @@ const App = () => {
       <h1>Nuxiba Prueba Técnica</h1>
       <UsersList />
       <UserDetails />
-      <Posts />
       <Todos />
+      <Posts />
     </div>
   );
 };

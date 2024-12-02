@@ -4,7 +4,7 @@ import axios from 'axios';
 // Acción para obtener las tareas del usuario
 export const fetchTodos = createAsyncThunk('todos/fetchTodos', async (userId) => {
   const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/todos`);
-  return response.data.sort((a, b) => b.id - a.id); // Ordenar por ID descendente
+  return response.data;
 });
 
 // Acción para agregar una nueva tarea
@@ -32,14 +32,17 @@ const todosSlice = createSlice({
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = action.payload;
+        // Ordenar las tareas por ID de mayor a menor
+        state.data = action.payload.sort((a, b) => b.id - a.id);
       })
       .addCase(fetchTodos.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
       .addCase(addTodo.fulfilled, (state, action) => {
-        state.data.unshift(action.payload); // Agregar la nueva tarea al inicio
+        // Agregar la nueva tarea al inicio y reordenar por ID
+        state.data.unshift(action.payload);
+        state.data.sort((a, b) => b.id - a.id);
       });
   },
 });
